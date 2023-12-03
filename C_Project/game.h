@@ -9,6 +9,7 @@
 #define MAXENEMY 10
 #define MAXBALL 15
 #define MAXSCORES 5
+#define MAXENEMYBALL 10
 
 int Score = 0;
 int count = 0;
