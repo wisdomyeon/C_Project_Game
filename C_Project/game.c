@@ -228,14 +228,17 @@ void RoundOne() {
                     esc();
                 }
             }
-            showEnemy();
-            moveEnemy();
-            showEnemyBall();
-            //moveEnemyBall();
-            Sleep(50);
-            Score++;
         }
+        showEnemy();
+        moveEnemy();
+        showEnemyBall();
+        Sleep(50);
+        Score = 30;
 
+        /*if (currentRound == 0) {
+            esc();
+            break;
+        }*/
 
         if (Score >= roundScoreThreshold) {
             currentRound++;
@@ -275,10 +278,13 @@ void RoundTwo() {
         showEnemy();
         moveEnemy();
         showEnemyBall();
-        //moveEnemyBall();
 
         Sleep(50);
         //Score++;
+        /*if (currentRound == 0) {
+            esc();
+            break;
+        }*/
         if (Score >= roundScoreThreshold) {
             currentRound++;
             roundScoreThreshold += 60;
@@ -317,13 +323,15 @@ void RoundThree() {
         showEnemy();
         moveEnemy();
         showEnemyBall();
-        //moveEnemyBall();
-
+   
         Sleep(50);
         //Score++;
+        if (currentRound == 0) {
+            esc();
+            break;
+        }
         if (Score >= roundScoreThreshold) {
             currentRound++;
-            //esc();
         }
     }
 }
@@ -494,7 +502,6 @@ void moveEnemyBall() { //추후 총알 속도만 느리게
         }
         if (enemyBall[i].y == 23 && abs(enemyBall[i].x - fx) <= 5) {
             HitPlayer(i);
-            printf("리턴 0");
             //이게 실행된 건 맞는데 적군 애들이 안 사라지고 남아있음
         }
         return 0;
@@ -506,10 +513,9 @@ void HitPlayer(int i) {
     gotoxy(fx - 2, 21); puts("   .   ");
     gotoxy(fx - 2, 22); puts(" .  . .");
     gotoxy(fx - 2, 23); puts("..:V:..");
-    Sleep(1000);
-    //currentRound = -1;
-    esc();
-    return 0;
+    currentRound = 0;
+    //esc();
+    //return 0;
 }
 
 
@@ -519,15 +525,14 @@ int compare(const void* a, const void* b)
 }
 
 
-int esc() {
+void esc() {
     system("cls");
     //gotoxy(30, 10);
     //printf("==========================GAMEOVER==========================\n\n");
     DisplayHighScores();  // ROUND / RANK / 이름 - 점수
     CursorView(0);
-    getchar();
-
-    return 0;
+    //getchar();
+    //return 0;
 }
 
 void UpdateHighScores(int newScore, PlayerInfo* player)
