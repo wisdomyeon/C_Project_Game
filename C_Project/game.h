@@ -23,7 +23,7 @@ int bx = -1;
 int by;
 
 char currentPlayer[20];
-int roundScoreThreshold = 60; // 라운드가 무제한으로 증가할 임계값 초기화 =====> 원래는 60임 참고
+int roundScoreThreshold = 60;
 int currentRound = 1;
 
 BOOL bFound;
@@ -41,14 +41,14 @@ void printA(int x, int y);
 void printM(int x, int y);
 void printE(int x, int y);
 
-typedef struct // 플레이어 정보 구조체 
+typedef struct 
 {
     int score;
     //int rank;
     char name[20];
-}PlayerInfo;
+}PlayerInfo; // 플레이어 정보 구조체 
 
-typedef struct // 적군 구조체
+typedef struct 
 {
     BOOL exist;
     int type;
@@ -57,15 +57,20 @@ typedef struct // 적군 구조체
     int nFrame;
     int nStay;
     int health;
-}Enemy;
+}Enemy; // 적군 구조체
 
-typedef struct // 적군 총알 구조체
+typedef struct 
 {
     BOOL exist;
     int x, y;
     int nFrame;
     int nStay;
-}EnemyBall;
+}EnemyBall; // 적군 총알 구조체
+
+typedef struct {
+    BOOL exist;
+    int x, y;
+}Item;
 
 const char* arEnemy[] = { " ;:^:; "," zZWZz ", " oO@Oo ", " <-=-> " };
 
@@ -81,8 +86,12 @@ void drawEnemyBall(int i);
 void eraseEnemyBall(int i);
 void moveEnemyBall();
 int getEnemyHealth();
-void HitPlayer(int i);
+void hitPlayer(int i);
 void showItem();
+void moveItem();
+void drawItem();
+void eraseItem();
+void getItemPlayer();
 void RoundTwo();
 void RoundThree();
 //int keyControl();

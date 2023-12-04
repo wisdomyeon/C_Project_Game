@@ -6,6 +6,7 @@ int res;
 
 Enemy enemy[MAXENEMY];
 EnemyBall enemyBall[MAXENEMYBALL];
+Item item;
 
 void mainPage() {
     enum ColorType {
@@ -231,7 +232,7 @@ void RoundOne() {
         }
         showEnemy();
         moveEnemy();
-        showEnemyBall();
+        //showEnemyBall();
         showItem();
 
         Sleep(50);
@@ -324,8 +325,7 @@ void RoundThree() {
         moveEnemy();
         showEnemyBall();
         showItem();
-   
-        Sleep(50);
+        //Sleep(3000);
         //Score++;
         if (currentRound == 0) {
             esc();
@@ -501,30 +501,66 @@ void moveEnemyBall() { //추후 총알 속도만 느리게
         if (enemyBall[i].exist == FALSE) {
             continue;
         }
-        if (enemyBall[i].y == 23 && abs(enemyBall[i].x - fx) <= 5) {
-            HitPlayer(i);
+        if (enemyBall[i].y == 23 && abs(enemyBall[i].x - fx) <= 4) {
+            hitPlayer(i);
             //이게 실행된 건 맞는데 적군 애들이 안 사라지고 남아있음
         }
         return 0;
     }
 }
 
-void HitPlayer(int i) {
+void hitPlayer(int i) {
     enemyBall[i].exist = FALSE;
     gotoxy(fx - 2, 21); puts("   .   ");
     gotoxy(fx - 2, 22); puts(" .  . .");
     gotoxy(fx - 2, 23); puts("..:V:..");
     currentRound = 0;
-    //esc();
-    //return 0;
 }
 
+void showItem() {
+    if (rand() % 200 == 0) { // 아이템 나올 확률
+        item.x = 40;
+        item.y = 2;
+        item.exist = TRUE;
+    }
+    if (item.exist == TRUE) {
+        eraseItem();
+        moveItem();
+    }
+}
+
+void moveItem() {
+    
+    if (item.y >= 23) {
+        item.exist = FALSE;
+        eraseItem();
+    }else {
+        drawItem();
+    }
+    if (item.y >= 23 && abs(item.x-fx) <= 5) {
+        printf("아이템 먹음");
+        getItemPlayer();
+    }
+}
+void drawItem() {
+    item.y++;
+    gotoxy(item.x, item.y);
+    printf("&");
+}
+
+void eraseItem() {
+    gotoxy(item.x, item.y);
+    printf(" ");
+}
+
+void getItemPlayer() {
+    printf("아이템 먹음");
+}
 
 int compare(const void* a, const void* b)
 {
     return ((PlayerInfo*)b)->score - ((PlayerInfo*)a)->score;
 }
-
 
 void esc() {
     system("cls");
