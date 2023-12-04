@@ -11,7 +11,7 @@
 
 #define MAXPLAYER 10
 #define MAXENEMY 10
-#define MAXBALL 15 //BALL 말고 MISSILE로 변경
+#define MAXBALL 15 
 #define MAXSCORES 5
 #define MAXENEMYBALL 15
 
@@ -94,6 +94,7 @@ void eraseItem();
 void getItemPlayer();
 void RoundTwo();
 void RoundThree();
+void eraseEnemy(int i);
 //int keyControl();
 int ascending_comp(const void* a, const void* b);
 int descending_comp(const void* a, const void* b);

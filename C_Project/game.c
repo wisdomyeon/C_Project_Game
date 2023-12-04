@@ -227,6 +227,7 @@ void RoundOne() {
                     break;
                 case ESC:
                     esc();
+                    break;
                 }
             }
         }
@@ -236,7 +237,7 @@ void RoundOne() {
         showItem();
 
         Sleep(50);
-        Score = 30;
+        Score = 65;
 
         if (currentRound == 0) {
             esc();
@@ -246,7 +247,7 @@ void RoundOne() {
         if (Score >= roundScoreThreshold) {
             currentRound++;
             roundScoreThreshold += 60;
-            //EnemySpeed++;
+            enemySpeed++;
             return 0;
         }
     }
@@ -273,6 +274,7 @@ void RoundTwo() {
                     break;
                 case ESC:
                     esc();
+                    break;
                 }
             }
         }
@@ -282,7 +284,7 @@ void RoundTwo() {
         showItem();
 
         Sleep(50);
-        //Score++;
+        Score = 65;
         if (currentRound == 0) {
             esc();
             break;
@@ -290,7 +292,7 @@ void RoundTwo() {
         if (Score >= roundScoreThreshold) {
             currentRound++;
             roundScoreThreshold += 60;
-            //EnemySpeed++;
+            enemySpeed++;
         }
     }
 }
@@ -318,6 +320,7 @@ void RoundThree() {
                     break;
                 case ESC:
                     esc();
+                    break;
                 }
             }
         }
@@ -326,7 +329,9 @@ void RoundThree() {
         showEnemyBall();
         showItem();
         //Sleep(3000);
-        //Score++;
+        
+        Sleep(50);
+        Score = 121;
         if (currentRound == 0) {
             esc();
             break;
@@ -419,16 +424,16 @@ void moveEnemy() {
             enemy[i].nStay = enemy[i].nFrame;
             if (enemy[i].x > 75 || enemy[i].x < 5) {
                 enemy[i].exist = FALSE;
-                gotoxy(enemy[i].x - 3, enemy[i].y);
-                puts("         ");
+                gotoxy(enemy[i].x, enemy[i].y);
+                puts("      ");
             }
             else {
-                enemy[i].x += enemy[i].move;
+                enemy[i].x += enemy[i].move * enemySpeed;
+                eraseEnemy(i);
                 if (enemy[i].health == 1) {
 
                     gotoxy(enemy[i].x, enemy[i].y);
                     puts(arEnemy[enemy[i].type]);
-                    puts("        ");
                 }
                 else if (enemy[i].health <= 3 && enemy[i].health > 0) {
                     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
@@ -447,6 +452,17 @@ void moveEnemy() {
 
             }
         }
+    }
+}
+
+void eraseEnemy(int i) {
+    if (enemy[i].move == 1) {
+        gotoxy(enemy[i].x - enemySpeed, enemy[i].y);
+        puts("       ");
+    }
+    else {
+        gotoxy(enemy[i].x + enemySpeed, enemy[i].y);
+        puts("       ");
     }
 }
 int getEnemyHealth(int i) {
@@ -538,7 +554,6 @@ void moveItem() {
         drawItem();
     }
     if (item.y >= 23 && abs(item.x-fx) <= 5) {
-        printf("아이템 먹음");
         getItemPlayer();
     }
 }
@@ -555,6 +570,23 @@ void eraseItem() {
 
 void getItemPlayer() {
     printf("아이템 먹음");
+    if (bx != -1) {
+        for (int i = 0; i < 3; i++) {
+            gotoxy(bx, by);
+            puts("     ");
+        }
+    }
+    if (by == 0)
+    {
+        bx = -1;
+    }
+    else {
+        by--;
+        for (int j = 0; j < 3; j++) {
+            gotoxy(bx + (j + 1), by);
+            puts("i");
+        }
+    }
 }
 
 int compare(const void* a, const void* b)
@@ -568,7 +600,6 @@ void esc() {
     //printf("==========================GAMEOVER==========================\n\n");
     DisplayHighScores();  // ROUND / RANK / 이름 - 점수
     CursorView(0);
-    //getchar();
     //return 0;
 }
 
