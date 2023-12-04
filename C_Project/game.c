@@ -232,13 +232,15 @@ void RoundOne() {
         showEnemy();
         moveEnemy();
         showEnemyBall();
+        showItem();
+
         Sleep(50);
         Score = 30;
 
-        /*if (currentRound == 0) {
+        if (currentRound == 0) {
             esc();
             break;
-        }*/
+        }
 
         if (Score >= roundScoreThreshold) {
             currentRound++;
@@ -250,10 +252,8 @@ void RoundOne() {
 }
 // ¶ó¿îµå2
 void RoundTwo() {
-    //system("cls");
     srand((unsigned)time(NULL));
     CursorView(0);
-    //system("cls");
 
     while (1) {
         if (_kbhit() == 1) {
@@ -278,18 +278,18 @@ void RoundTwo() {
         showEnemy();
         moveEnemy();
         showEnemyBall();
+        showItem();
 
         Sleep(50);
         //Score++;
-        /*if (currentRound == 0) {
+        if (currentRound == 0) {
             esc();
             break;
-        }*/
+        }
         if (Score >= roundScoreThreshold) {
             currentRound++;
             roundScoreThreshold += 60;
             //EnemySpeed++;
-            //return 0;
         }
     }
 }
@@ -323,6 +323,7 @@ void RoundThree() {
         showEnemy();
         moveEnemy();
         showEnemyBall();
+        showItem();
    
         Sleep(50);
         //Score++;
