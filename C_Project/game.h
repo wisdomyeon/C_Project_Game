@@ -21,6 +21,9 @@ int fx = 60;
 char ch;
 int bx = -1;
 int by;
+// ÃÑ ½ú´Ù´Â º¯¼ö
+int isShooting = 0;
+int ballCount = 0;
 
 char currentPlayer[20];
 int roundScoreThreshold = 60;
@@ -72,6 +75,12 @@ typedef struct {
     int x, y;
 }Item;
 
+typedef struct {
+    BOOL exist;
+    BOOL isShooting;
+    int x, y;
+}ItemBall;
+
 const char* arEnemy[] = { " ;:^:; "," zZWZz ", " oO@Oo ", " <-=-> " };
 
 void ShotingGame();
@@ -91,13 +100,20 @@ void showItem();
 void moveItem();
 void drawItem();
 void eraseItem();
-void getItemPlayer();
+void showGun();
+void moveGun();
+void drawGun();
+void eraseGun();
+void getItemPlayer(int x, int y);
 void RoundTwo();
 void RoundThree();
 void eraseEnemy(int i);
+void showItemBall(unsigned char ch);
 //int keyControl();
 int ascending_comp(const void* a, const void* b);
 int descending_comp(const void* a, const void* b);
 void UpdateHighScores(int newScore, PlayerInfo* player);
 void DisplayHighScores();
 void esc();
+void defaultBall();
+void eraseItemBall(int x, int y);

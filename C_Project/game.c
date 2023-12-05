@@ -7,6 +7,7 @@ int res;
 Enemy enemy[MAXENEMY];
 EnemyBall enemyBall[MAXENEMYBALL];
 Item item;
+ItemBall itemBall;
 
 void mainPage() {
     enum ColorType {
@@ -230,14 +231,41 @@ void RoundOne() {
                     break;
                 }
             }
+            //if (ch == SPACE) {
+                //defaultBall();
+                 if (item.y == by && item.x == bx) {
+                     //abs(item.x - bx) <= 5
+                    gotoxy(25, 30);
+                    printf("아템 맞음");
+                    itemBall.exist = TRUE;
+                    int itemBall_X = item.x;
+                    int itemBall_Y = 23;
+
+                    
+                //    if (itemBall.exist) {
+                //        getItemPlayer(itemBall_X, itemBall_Y);
+                //    }
+                    
+                }
+                 if (!itemBall.isShooting) {
+                     if (ch == SPACE && itemBall.exist) {
+                         itemBall.isShooting = TRUE;
+                         itemBall.x = bx+1;
+                         itemBall.y = by-1;
+                         // getItemPlayer(bx, by);
+                     }
+                 }
+                 
+            //}
         }
         showEnemy();
         moveEnemy();
         //showEnemyBall();
         showItem();
+        showGun();
 
-        Sleep(50);
-        Score = 65;
+        Sleep(40);
+        Score = 35;
 
         if (currentRound == 0) {
             esc();
@@ -251,6 +279,42 @@ void RoundOne() {
             return 0;
         }
     }
+}
+
+void showGun() {
+   
+    if (itemBall.isShooting == TRUE) {
+        eraseGun();
+        moveGun();
+    }
+}
+
+void moveGun() {
+
+    if (itemBall.y <= 1) {
+        itemBall.isShooting = FALSE;
+        eraseGun();
+    }
+    else {
+        for (int i=0; i < 21; i++) {}
+        drawGun();
+    }
+}
+void drawGun() {
+    itemBall.y--;
+    gotoxy(itemBall.x, itemBall.y);
+    printf("iii");
+}
+
+void eraseGun() {
+    gotoxy(itemBall.x, itemBall.y);
+    printf("    ");
+}
+
+void defaultBall() {
+    gotoxy(25, 30);
+    printf("총알");
+    printf("i");
 }
 // 라운드2
 void RoundTwo() {
@@ -352,17 +416,17 @@ void playerMove(unsigned char ch) { //movePlayer수정
     }
 
     if (ch == LEFT) {
-        if (fx > 6) {
-            fx--;
-            playerDraw(fx, 23);
-            playerErase(fx + 5, 23);
+        if (bx > 6) {
+            bx--;
+            playerDraw(bx, 23);
+            playerErase(bx + 5, 23);
         }
     }
     if (ch == RIGHT) {
-        if (fx < 72) {
-            fx++;
-            playerDraw(fx, 23);
-            playerErase(fx - 2, 23);
+        if (bx < 72) {
+            bx++;
+            playerDraw(bx, 23);
+            playerErase(bx - 2, 23);
         }
     }
 }
@@ -519,7 +583,6 @@ void moveEnemyBall() { //추후 총알 속도만 느리게
         }
         if (enemyBall[i].y == 23 && abs(enemyBall[i].x - fx) <= 4) {
             hitPlayer(i);
-            //이게 실행된 건 맞는데 적군 애들이 안 사라지고 남아있음
         }
         return 0;
     }
@@ -534,7 +597,7 @@ void hitPlayer(int i) {
 }
 
 void showItem() {
-    if (rand() % 200 == 0) { // 아이템 나올 확률
+    if (rand() % 50 == 0) { // 아이템 나올 확률
         item.x = 40;
         item.y = 2;
         item.exist = TRUE;
@@ -553,9 +616,6 @@ void moveItem() {
     }else {
         drawItem();
     }
-    if (item.y >= 23 && abs(item.x-fx) <= 5) {
-        getItemPlayer();
-    }
 }
 void drawItem() {
     item.y++;
@@ -568,25 +628,46 @@ void eraseItem() {
     printf(" ");
 }
 
-void getItemPlayer() {
-    printf("아이템 먹음");
-    if (bx != -1) {
-        for (int i = 0; i < 3; i++) {
-            gotoxy(bx, by);
-            puts("     ");
+void getItemPlayer(int x, int y) {
+    gotoxy(25, 33);
+    printf("%d %d", x, y);
+    int gunY = y;
+    for (int i = 0; i < 21; i++){
+      /*  if (bx != -1) {
+            for (int i = 0; i < 3; i++) {
+                gotoxy(x, y-2);
+                puts("   ");
+            }
+        } */
+        if (bx != -1) {
+            gotoxy(x, y +3);
+            puts("   ");
         }
-    }
-    if (by == 0)
-    {
-        bx = -1;
-    }
-    else {
-        by--;
-        for (int j = 0; j < 3; j++) {
-            gotoxy(bx + (j + 1), by);
+        if (by == 0) {
+             bx = -1;
+        }else {
+            y--;
+        //    for (int j = 0; j < 3; j++) {
+        //       // gotoxy(x + (j + 1), y);
+        //        gotoxy(x + (j + 1), y);
+        //        puts("i");
+               
+        //    }
+            gotoxy(x , y);
             puts("i");
+
+           eraseItemBall(x, y);
         }
     }
+}
+
+void eraseItemBall(int x, int y) {
+    gotoxy(x, y-1);
+    printf("  ");
+}
+
+void showItemBall(unsigned char ch) {
+    printf("%s", ch);
 }
 
 int compare(const void* a, const void* b)
@@ -600,7 +681,6 @@ void esc() {
     //printf("==========================GAMEOVER==========================\n\n");
     DisplayHighScores();  // ROUND / RANK / 이름 - 점수
     CursorView(0);
-    //return 0;
 }
 
 void UpdateHighScores(int newScore, PlayerInfo* player)
