@@ -231,38 +231,24 @@ void RoundOne() {
                     break;
                 }
             }
-            //if (ch == SPACE) {
-                //defaultBall();
-                 if (item.y == by && item.x == bx) {
-                     //abs(item.x - bx) <= 5
-                    gotoxy(25, 30);
-                    printf("아템 맞음");
-                    itemBall.exist = TRUE;
-                    int itemBall_X = item.x;
-                    int itemBall_Y = 23;
-
-                    
-                //    if (itemBall.exist) {
-                //        getItemPlayer(itemBall_X, itemBall_Y);
-                //    }
-                    
+            if (item.y == by && item.x == bx) {
+                gotoxy(25, 30);
+                printf("아템 맞음");
+                itemBall.exist = TRUE;
+            }
+            if (!itemBall.isShooting) {
+                if (ch == SPACE && itemBall.exist) {
+                    itemBall.isShooting = TRUE;
+                    itemBall.x = bx+1;
+                    itemBall.y = by-1;
                 }
-                 if (!itemBall.isShooting) {
-                     if (ch == SPACE && itemBall.exist) {
-                         itemBall.isShooting = TRUE;
-                         itemBall.x = bx+1;
-                         itemBall.y = by-1;
-                         // getItemPlayer(bx, by);
-                     }
-                 }
-                 
-            //}
+            }
         }
         showEnemy();
         moveEnemy();
-        //showEnemyBall();
+        showEnemyBall(); 
         showItem();
-        showGun();
+        showItemBall();
 
         Sleep(40);
         Score = 35;
@@ -281,41 +267,34 @@ void RoundOne() {
     }
 }
 
-void showGun() {
-   
+void showItemBall() {
     if (itemBall.isShooting == TRUE) {
-        eraseGun();
-        moveGun();
+        eraseItemBall();
+        moveItemBall();
     }
 }
 
-void moveGun() {
-
+void moveItemBall(){
     if (itemBall.y <= 1) {
         itemBall.isShooting = FALSE;
-        eraseGun();
+        eraseItemBall();
     }
     else {
         for (int i=0; i < 21; i++) {}
-        drawGun();
+        drawItemBall();
     }
 }
-void drawGun() {
+void drawItemBall() {
     itemBall.y--;
     gotoxy(itemBall.x, itemBall.y);
     printf("iii");
 }
 
-void eraseGun() {
+void eraseItemBall() {
     gotoxy(itemBall.x, itemBall.y);
     printf("    ");
 }
 
-void defaultBall() {
-    gotoxy(25, 30);
-    printf("총알");
-    printf("i");
-}
 // 라운드2
 void RoundTwo() {
     srand((unsigned)time(NULL));
@@ -581,7 +560,7 @@ void moveEnemyBall() { //추후 총알 속도만 느리게
         if (enemyBall[i].exist == FALSE) {
             continue;
         }
-        if (enemyBall[i].y == 23 && abs(enemyBall[i].x - fx) <= 4) {
+        if (enemyBall[i].y == 23 && abs(enemyBall[i].x - fx) <= 5) {
             hitPlayer(i);
         }
         return 0;
@@ -597,8 +576,8 @@ void hitPlayer(int i) {
 }
 
 void showItem() {
-    if (rand() % 50 == 0) { // 아이템 나올 확률
-        item.x = 40;
+    if (rand() % 200 == 0) { // 아이템 나올 확률
+        item.x = rand()%40+5;
         item.y = 2;
         item.exist = TRUE;
     }
@@ -609,7 +588,6 @@ void showItem() {
 }
 
 void moveItem() {
-    
     if (item.y >= 23) {
         item.exist = FALSE;
         eraseItem();
@@ -626,48 +604,6 @@ void drawItem() {
 void eraseItem() {
     gotoxy(item.x, item.y);
     printf(" ");
-}
-
-void getItemPlayer(int x, int y) {
-    gotoxy(25, 33);
-    printf("%d %d", x, y);
-    int gunY = y;
-    for (int i = 0; i < 21; i++){
-      /*  if (bx != -1) {
-            for (int i = 0; i < 3; i++) {
-                gotoxy(x, y-2);
-                puts("   ");
-            }
-        } */
-        if (bx != -1) {
-            gotoxy(x, y +3);
-            puts("   ");
-        }
-        if (by == 0) {
-             bx = -1;
-        }else {
-            y--;
-        //    for (int j = 0; j < 3; j++) {
-        //       // gotoxy(x + (j + 1), y);
-        //        gotoxy(x + (j + 1), y);
-        //        puts("i");
-               
-        //    }
-            gotoxy(x , y);
-            puts("i");
-
-           eraseItemBall(x, y);
-        }
-    }
-}
-
-void eraseItemBall(int x, int y) {
-    gotoxy(x, y-1);
-    printf("  ");
-}
-
-void showItemBall(unsigned char ch) {
-    printf("%s", ch);
 }
 
 int compare(const void* a, const void* b)
