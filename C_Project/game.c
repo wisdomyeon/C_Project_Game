@@ -223,15 +223,21 @@ void RoundOne() {
                 switch (ch)
                 {
                 case LEFT:
+                    if (fx > 6) {
+                        fx--;
+                    }
+                    break;
                 case RIGHT:
-                    playerMove(ch);
+                    if (fx < 72)
+                        fx++;
+                    //playerMove(ch);
                     break;
                 case ESC:
                     esc();
                     break;
                 }
             }
-            if (item.y == by && item.x == bx) {
+            if (item.y == 23 && abs(item.x - fx) <= 6) {
                 gotoxy(25, 30);
                 printf("아템 맞음");
                 itemBall.exist = TRUE;
@@ -239,19 +245,19 @@ void RoundOne() {
             if (!itemBall.isShooting) {
                 if (ch == SPACE && itemBall.exist) {
                     itemBall.isShooting = TRUE;
-                    itemBall.x = bx+1;
-                    itemBall.y = by-1;
+                    itemBall.x = fx+1;
+                    itemBall.y = 23-1;
                 }
             }
         }
+        playerDraw(fx, 23, ch);
         showEnemy();
         moveEnemy();
-        showEnemyBall(); 
+        //showEnemyBall(); 
         showItem();
         showItemBall();
 
         Sleep(40);
-        Score = 35;
 
         if (currentRound == 0) {
             esc();
@@ -313,7 +319,7 @@ void RoundTwo() {
                 {
                 case LEFT:
                 case RIGHT:
-                    playerMove(ch);
+                    //playerMove(ch);
                     break;
                 case ESC:
                     esc();
@@ -327,7 +333,7 @@ void RoundTwo() {
         showItem();
 
         Sleep(50);
-        Score = 65;
+
         if (currentRound == 0) {
             esc();
             break;
@@ -359,7 +365,7 @@ void RoundThree() {
                 {
                 case LEFT:
                 case RIGHT:
-                    playerMove(ch);
+                    //playerMove(ch);
                     break;
                 case ESC:
                     esc();
@@ -374,7 +380,6 @@ void RoundThree() {
         //Sleep(3000);
         
         Sleep(50);
-        Score = 121;
         if (currentRound == 0) {
             esc();
             break;
@@ -386,14 +391,7 @@ void RoundThree() {
 }
 
 
-void playerMove(unsigned char ch) { //movePlayer수정
-    int moveFlag = 0; //추후 필요없는 변수 삭제하기
-    if (bx == -1) {
-        bx = fx;
-        by = 23;
-        playerDraw(bx, by);
-    }
-
+/*void playerMove() { //movePlayer수정
     if (ch == LEFT) {
         if (bx > 6) {
             bx--;
@@ -408,12 +406,19 @@ void playerMove(unsigned char ch) { //movePlayer수정
             playerErase(bx - 2, 23);
         }
     }
-}
+}*/
 
-void playerDraw(int x, int y) { //Drawplayer수정
+void playerDraw(int x, int y, unsigned char ch) { //Drawplayer수정
     gotoxy(x, y);
     puts("<<A>>");
 
+    if (ch == LEFT) {
+        playerErase(x + 5, 23);
+    }
+    if (ch == RIGHT) {
+        playerErase(x - 2, 23);
+    }
+    
     gotoxy(0, 34);
     printf("점수 = %d  \n라운드 = %d", Score, currentRound);
 }
@@ -495,6 +500,12 @@ void moveEnemy() {
 
             }
         }
+        if (enemy[i].y == itemBall.y && abs(enemy[i].x - itemBall.x) <= 6) {
+            enemy[i].exist = FALSE;
+            itemBall.isShooting = FALSE;
+            eraseItemBall();
+            hitEnemy(i);
+        }
     }
 }
 
@@ -517,6 +528,17 @@ int getEnemyHealth(int i) {
     }
     else if (currentRound == 3) {
         enemy[i].health = (rand() % 2 == 0) ? 3 : 5;
+    }
+}
+
+void hitEnemy(int i) {
+    gotoxy(bx, by);
+    printf("     ");
+    gotoxy(enemy[i].x, enemy[i].y);
+    puts("       ");
+    enemy[i].hit = TRUE;
+    if (enemy[i].hit == TRUE) {
+        Score += 7 - enemy[i].nFrame;
     }
 }
 
@@ -577,7 +599,7 @@ void hitPlayer(int i) {
 
 void showItem() {
     if (rand() % 200 == 0) { // 아이템 나올 확률
-        item.x = rand()%40+5;
+        item.x = 30;//rand()%40+5;
         item.y = 2;
         item.exist = TRUE;
     }

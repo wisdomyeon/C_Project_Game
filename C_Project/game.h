@@ -17,7 +17,7 @@
 
 int Score = 0;
 int count = 0;
-int fx = 60;
+int fx = 30;
 char ch;
 int bx = -1;
 int by;
@@ -54,6 +54,7 @@ typedef struct
 typedef struct 
 {
     BOOL exist;
+    BOOL hit;
     int type;
     int x, y;
     int move;
@@ -85,8 +86,8 @@ const char* arEnemy[] = { " ;:^:; "," zZWZz ", " oO@Oo ", " <-=-> " };
 
 void ShotingGame();
 void RoundOne();
-void playerMove(unsigned char ch);
-void playerDraw(int x, int y);
+//void playerMove(unsigned char ch);
+void playerDraw(int x, int y, unsigned char ch);
 void playerErase(int x, int y);
 void showEnemy();
 void moveEnemy();
@@ -108,6 +109,7 @@ void getItemPlayer(int x, int y);
 void RoundTwo();
 void RoundThree();
 void eraseEnemy(int i);
+void hitEnemy(int i);
 //int keyControl();
 int ascending_comp(const void* a, const void* b);
 int descending_comp(const void* a, const void* b);
