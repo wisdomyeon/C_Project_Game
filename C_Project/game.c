@@ -4,6 +4,7 @@ PlayerInfo playerList[] = { {2,"Áö¼ö"},{50,"Ã¶¼ö"} ,{ 45,"¿µÈñ"} ,{22,"¸Í±¸"} ,{
 int arrLength = sizeof(playerList) / sizeof(playerList[0]); //ÃßÈÄ arrSize·Î º¯°æ
 int res;
 
+DefaultBall defaultBall;
 Enemy enemy[MAXENEMY];
 EnemyBall enemyBall[MAXENEMYBALL];
 Item item;
@@ -232,15 +233,21 @@ void RoundOne() {
                         fx++;
                     //playerMove(ch);
                     break;
+                case SPACE:
+                    defaultBall.x = fx + 2 ;
+                    defaultBall.y = fy ;
+                    defaultBall.exist = TRUE;
+                    break;
                 case ESC:
                     esc();
                     break;
                 }
             }
-            if (item.y == 23 && abs(item.x - fx) <= 6) {
+            if (item.y == fy && abs(item.x - fx) <= 6) {
                 gotoxy(25, 30);
-                printf("¾ÆÅÛ ¸ÂÀ½");
+                printf("¾ÆÀÌÅÛ È¹µæ!");
                 itemBall.exist = TRUE;
+                defaultBall.exist = FALSE;
             }
             if (!itemBall.isShooting) {
                 if (ch == SPACE && itemBall.exist) {
@@ -250,7 +257,8 @@ void RoundOne() {
                 }
             }
         }
-        playerDraw(fx, 23, ch);
+        playerDraw(fx, fy, ch);
+        moveAndPrintAllies();
         showEnemy();
         moveEnemy();
         //showEnemyBall(); 
@@ -272,36 +280,52 @@ void RoundOne() {
         }
     }
 }
-
-void showItemBall() {
-    if (itemBall.isShooting == TRUE) {
-        eraseItemBall();
-        moveItemBall();
+///////////////////////±âº» ÃÑ¾Ë//////////////////////////////
+void moveAndPrintAllies()  //¾Æ±º ÃÑ¾Ë ÀÌµ¿°ú Ãâ·Â
+{
+    itemBall.exist = FALSE;
+    if (defaultBall.y <= 1) {
+        defaultBall.exist = FALSE;
+        eraseDefaultBall();
+    }
+    if (defaultBall.exist && itemBall.exist == FALSE) {
+        for (int i = 0; i < 18; i++) {}
+        eraseDefaultBall();
+        drawDefaultBall();
     }
 }
-
-void moveItemBall(){
-    if (itemBall.y <= 1) {
-        itemBall.isShooting = FALSE;
+void drawDefaultBall() {
+    defaultBall.y--;
+    gotoxy(defaultBall.x, defaultBall.y);
+    printf("i");
+}
+void eraseDefaultBall() {
+    gotoxy(defaultBall.x, defaultBall.y);
+    printf(" ");
+}
+//////////////¾ÆÀÌÅÛ È¹µæ ÈÄ ¹Ù²ï ÃÑ¾Ë//////////////////////
+void showItemBall() {
+    if (defaultBall.exist == FALSE && itemBall.isShooting == TRUE) {
+        for (int i = 0; i < 21; i++) {}
         eraseItemBall();
-    }
-    else {
-        for (int i=0; i < 21; i++) {}
         drawItemBall();
-    }
+        if (itemBall.y <= 1) {
+            itemBall.isShooting = FALSE;
+            eraseItemBall();
+        }
+    }   
 }
 void drawItemBall() {
     itemBall.y--;
     gotoxy(itemBall.x, itemBall.y);
     printf("iii");
 }
-
 void eraseItemBall() {
     gotoxy(itemBall.x, itemBall.y);
     printf("    ");
 }
 
-// ¶ó¿îµå2
+///////////////////¶ó¿îµå2/////////////////////////
 void RoundTwo() {
     srand((unsigned)time(NULL));
     CursorView(0);
@@ -596,10 +620,10 @@ void hitPlayer(int i) {
     gotoxy(fx - 2, 23); puts("..:V:..");
     currentRound = 0;
 }
-
+//////////////////////¾ÆÀÌÅÛ//////////////////////////
 void showItem() {
     if (rand() % 200 == 0) { // ¾ÆÀÌÅÛ ³ª¿Ã È®·ü
-        item.x = 30;//rand()%40+5;
+        item.x = 30; //rand() % 40 + 5;
         item.y = 2;
         item.exist = TRUE;
     }
@@ -614,6 +638,7 @@ void moveItem() {
         item.exist = FALSE;
         eraseItem();
     }else {
+        eraseItem();
         drawItem();
     }
 }

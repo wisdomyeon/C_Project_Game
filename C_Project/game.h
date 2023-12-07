@@ -14,16 +14,19 @@
 #define MAXBALL 15 
 #define MAXSCORES 5
 #define MAXENEMYBALL 15
+#define MAXDEFAULTBALL 10
 
 int Score = 0;
 int count = 0;
-int fx = 30;
+int fx = 40;
+int fy = 23;
 char ch;
 int bx = -1;
 int by;
 // 총 쐈다는 변수
 int isShooting = 0;
 int ballCount = 0;
+int ballIndex = 0;
 
 char currentPlayer[20];
 int roundScoreThreshold = 60;
@@ -50,6 +53,12 @@ typedef struct
     //int rank;
     char name[20];
 }PlayerInfo; // 플레이어 정보 구조체 
+
+typedef struct
+{
+    BOOL exist;
+    int x, y;
+}DefaultBall;
 
 typedef struct 
 {
@@ -89,6 +98,7 @@ void RoundOne();
 //void playerMove(unsigned char ch);
 void playerDraw(int x, int y, unsigned char ch);
 void playerErase(int x, int y);
+void moveAndPrintAllies();
 void showEnemy();
 void moveEnemy();
 void showEnemyBall();
@@ -116,3 +126,6 @@ int descending_comp(const void* a, const void* b);
 void UpdateHighScores(int newScore, PlayerInfo* player);
 void DisplayHighScores();
 void esc();
+
+void drawDefaultBall();
+void eraseDefaultBall();
