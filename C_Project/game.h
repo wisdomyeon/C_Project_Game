@@ -15,6 +15,7 @@
 #define MAXSCORES 5
 #define MAXENEMYBALL 15
 #define MAXDEFAULTBALL 10
+#define ITEM_DROP_SPEED 15
 
 int Score = 0;
 int count = 0;
@@ -23,17 +24,16 @@ int fy = 23;
 char ch;
 int bx = -1;
 int by;
-// 총 쐈다는 변수
-int isShooting = 0;
-int ballCount = 0;
-int ballIndex = 0;
-
-char currentPlayer[20];
-int roundScoreThreshold = 60;
-int currentRound = 1;
-
 BOOL bFound;
+int roundScoreThreshold = 60; //추후 60으로 변경
+int currentRound = 1;
+char currentPlayer[20];
+int isShooting = 0; // 총 쐈다는 변수
 int enemySpeed = 1; // 초기 이동 속도
+int shootingCount;
+//int ballCount = 0;
+//int ballIndex = 0;
+//int ItemSpeed = 0;
 
 void start();
 void printS(int x, int y);
@@ -58,7 +58,7 @@ typedef struct
 {
     BOOL exist;
     int x, y;
-}DefaultBall;
+}DefaultBall; // 플레이어 기본 총알 구조체
 
 typedef struct 
 {
@@ -83,22 +83,26 @@ typedef struct
 typedef struct {
     BOOL exist;
     int x, y;
-}Item;
+}Item; // 떨어지는 아이템 구조체
 
 typedef struct {
     BOOL exist;
     BOOL isShooting;
     int x, y;
-}ItemBall;
+}ItemBall; // 아이템 획득후 플레이어 총알 구조체
 
 const char* arEnemy[] = { " ;:^:; "," zZWZz ", " oO@Oo ", " <-=-> " };
 
 void ShotingGame();
 void RoundOne();
-//void playerMove(unsigned char ch);
-void playerDraw(int x, int y, unsigned char ch);
-void playerErase(int x, int y);
+void RoundTwo();
+void RoundThree();
+void drawPlayer(int x, int y, unsigned char ch); //drawPlayer로 수정
+void erasePlayer(int x, int y); //erasePlayer로 수정
+void hitPlayer(int i);
 void moveAndPrintAllies();
+void drawDefaultBall();
+void eraseDefaultBall();
 void showEnemy();
 void moveEnemy();
 void showEnemyBall();
@@ -106,7 +110,6 @@ void drawEnemyBall(int i);
 void eraseEnemyBall(int i);
 void moveEnemyBall();
 int getEnemyHealth();
-void hitPlayer(int i);
 void showItem();
 void moveItem();
 void drawItem();
@@ -116,16 +119,11 @@ void moveItemBall();
 void drawItemBall();
 void eraseItemBall();
 void getItemPlayer(int x, int y);
-void RoundTwo();
-void RoundThree();
 void eraseEnemy(int i);
 void hitEnemy(int i);
 //int keyControl();
-int ascending_comp(const void* a, const void* b);
-int descending_comp(const void* a, const void* b);
+//int ascending_comp(const void* a, const void* b);
+int compare(const void* a, const void* b);
 void UpdateHighScores(int newScore, PlayerInfo* player);
 void DisplayHighScores();
 void esc();
-
-void drawDefaultBall();
-void eraseDefaultBall();

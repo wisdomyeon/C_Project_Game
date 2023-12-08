@@ -1,5 +1,4 @@
 ﻿  game.c
-C:\Users\user\source\repos\C_Project\C_Project\game.c(1,1): warning C4828: 파일에 0x483e 오프셋에서 시작하는 문자가 포함되어 있습니다. 이 문자는 현재 원본 문자 집합에서 잘못된 문자입니다(코드 페이지 949).
 C:\Users\user\source\repos\C_Project\C_Project\game.c(32,11): warning C4244: '함수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(34,5): warning C4013: 'CursorView'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(40,5): warning C4013: 'textcolor'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
@@ -7,7 +6,16 @@ C:\Users\user\source\repos\C_Project\C_Project\game.c(65,5): warning C4013: 'got
 C:\Users\user\source\repos\C_Project\C_Project\game.c(30,7): warning C4101: 'COLOR' :참조되지 않은 지역 변수입니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(188,13): warning C4477: 'scanf_s' : 서식 문자열 '%s'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'size_t'입니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(188,13): message : 이 인수는 버퍼 크기로 사용됩니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(279,21): warning C4098: 'RoundOne': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(612,17): warning C4098: 'moveEnemyBall': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(556): warning C4716: 'getEnemyHealth': 값을 반환해야 합니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(205,32): warning C4098: 'ShotingGame': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(243,29): warning C4098: 'RoundOne': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(267,21): warning C4098: 'RoundOne': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(273,25): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(312,29): warning C4098: 'RoundTwo': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(334,21): warning C4098: 'RoundTwo': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(339,25): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(378,29): warning C4098: 'RoundThree': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(400,21): warning C4098: 'RoundThree': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(640,17): warning C4098: 'moveEnemyBall': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(703,13): warning C4098: 'esc': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(577): warning C4716: 'getEnemyHealth': 값을 반환해야 합니다.
   C_Project.vcxproj -> C:\Users\user\source\repos\C_Project\x64\Debug\C_Project.exe

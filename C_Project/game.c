@@ -1,7 +1,7 @@
-#include "game.h"
+ï»¿#include "game.h"
 
-PlayerInfo playerList[] = { {2,"Áö¼ö"},{50,"Ã¶¼ö"} ,{ 45,"¿µÈñ"} ,{22,"¸Í±¸"} ,{ 55,"À¯¸®"} ,{ 1,"ÈòµÕÀÌ"} ,{10,"Â¯¾Æ"} ,{60, "¹Ì¼±"} };
-int arrLength = sizeof(playerList) / sizeof(playerList[0]); //ÃßÈÄ arrSize·Î º¯°æ
+PlayerInfo playerList[] = { {2,"ì§€ìˆ˜"},{50,"ì² ìˆ˜"} ,{ 45,"ì˜í¬"} ,{22,"ë§¹êµ¬"} ,{ 55,"ìœ ë¦¬"} ,{ 1,"í°ë‘¥ì´"} ,{10,"ì§±ì•„"} ,{60, "ë¯¸ì„ "} };
+int arrLength = sizeof(playerList) / sizeof(playerList[0]); //ì¶”í›„ arrSizeë¡œ ë³€ê²½
 int res;
 
 DefaultBall defaultBall;
@@ -72,118 +72,118 @@ void mainPage() {
 
 void printS(int x, int y)
 {
-    gotoxy(x, y);     printf(" ¢Ã¢Ã¢Ã¢Ã");
-    gotoxy(x, y + 1); printf("¢Ã      ");
-    gotoxy(x, y + 2); printf("¢Ã      ");
-    gotoxy(x, y + 3); printf(" ¢Ã¢Ã¢Ã¢Ã");
-    gotoxy(x, y + 4); printf("        ¢Ã");
-    gotoxy(x, y + 5); printf("        ¢Ã");
-    gotoxy(x, y + 6); printf(" ¢Ã¢Ã¢Ã¢Ã");
+    gotoxy(x, y);     printf(" â–£â–£â–£â–£");
+    gotoxy(x, y + 1); printf("â–£      ");
+    gotoxy(x, y + 2); printf("â–£      ");
+    gotoxy(x, y + 3); printf(" â–£â–£â–£â–£");
+    gotoxy(x, y + 4); printf("        â–£");
+    gotoxy(x, y + 5); printf("        â–£");
+    gotoxy(x, y + 6); printf(" â–£â–£â–£â–£");
 }
 
 void printH(int x, int y)
 {
-    gotoxy(x, y);     printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 1); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 2); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 3); printf("¢Ã¢Ã¢Ã¢Ã¢Ã");
-    gotoxy(x, y + 4); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 5); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 6); printf("¢Ã      ¢Ã");
+    gotoxy(x, y);     printf("â–£      â–£");
+    gotoxy(x, y + 1); printf("â–£      â–£");
+    gotoxy(x, y + 2); printf("â–£      â–£");
+    gotoxy(x, y + 3); printf("â–£â–£â–£â–£â–£");
+    gotoxy(x, y + 4); printf("â–£      â–£");
+    gotoxy(x, y + 5); printf("â–£      â–£");
+    gotoxy(x, y + 6); printf("â–£      â–£");
 }
 
 void printO(int x, int y)
 {
-    gotoxy(x, y);     printf(" ¢Ã¢Ã¢Ã¢Ã  ");
-    gotoxy(x, y + 1); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 2); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 3); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 4); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 5); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 6); printf(" ¢Ã¢Ã¢Ã¢Ã ");
+    gotoxy(x, y);     printf(" â–£â–£â–£â–£  ");
+    gotoxy(x, y + 1); printf("â–£      â–£");
+    gotoxy(x, y + 2); printf("â–£      â–£");
+    gotoxy(x, y + 3); printf("â–£      â–£");
+    gotoxy(x, y + 4); printf("â–£      â–£");
+    gotoxy(x, y + 5); printf("â–£      â–£");
+    gotoxy(x, y + 6); printf(" â–£â–£â–£â–£ ");
 }
 
 void printT(int x, int y)
 {
-    gotoxy(x, y);      printf("¢Ã¢Ã¢Ã¢Ã¢Ã¢Ã");
-    gotoxy(x, y + 1);  printf("    ¢Ã¢Ã    ");
-    gotoxy(x, y + 2);  printf("    ¢Ã¢Ã   ");
-    gotoxy(x, y + 3);  printf("    ¢Ã¢Ã   ");
-    gotoxy(x, y + 4);  printf("    ¢Ã¢Ã   ");
-    gotoxy(x, y + 5);  printf("    ¢Ã¢Ã   ");
-    gotoxy(x, y + 6);  printf("    ¢Ã¢Ã   ");
+    gotoxy(x, y);      printf("â–£â–£â–£â–£â–£â–£");
+    gotoxy(x, y + 1);  printf("    â–£â–£    ");
+    gotoxy(x, y + 2);  printf("    â–£â–£   ");
+    gotoxy(x, y + 3);  printf("    â–£â–£   ");
+    gotoxy(x, y + 4);  printf("    â–£â–£   ");
+    gotoxy(x, y + 5);  printf("    â–£â–£   ");
+    gotoxy(x, y + 6);  printf("    â–£â–£   ");
 }
 
 void printI(int x, int y)
 {
-    gotoxy(x, y);     printf("¢Ã¢Ã¢Ã¢Ã¢Ã");
-    gotoxy(x, y + 1);   printf("    ¢Ã  ");
-    gotoxy(x, y + 2);   printf("    ¢Ã  ");
-    gotoxy(x, y + 3);   printf("    ¢Ã  ");
-    gotoxy(x, y + 4);   printf("    ¢Ã  ");
-    gotoxy(x, y + 5);   printf("    ¢Ã  ");
-    gotoxy(x, y + 6); printf("¢Ã¢Ã¢Ã¢Ã¢Ã");
+    gotoxy(x, y);     printf("â–£â–£â–£â–£â–£");
+    gotoxy(x, y + 1);   printf("    â–£  ");
+    gotoxy(x, y + 2);   printf("    â–£  ");
+    gotoxy(x, y + 3);   printf("    â–£  ");
+    gotoxy(x, y + 4);   printf("    â–£  ");
+    gotoxy(x, y + 5);   printf("    â–£  ");
+    gotoxy(x, y + 6); printf("â–£â–£â–£â–£â–£");
 }
 
 void printN(int x, int y)
 {
-    gotoxy(x, y);     printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 1); printf("¢Ã¢Ã    ¢Ã");
-    gotoxy(x, y + 2); printf("¢Ã ¢Ã   ¢Ã");
-    gotoxy(x, y + 3); printf("¢Ã  ¢Ã  ¢Ã");
-    gotoxy(x, y + 4); printf("¢Ã   ¢Ã ¢Ã");
-    gotoxy(x, y + 5); printf("¢Ã    ¢Ã¢Ã");
-    gotoxy(x, y + 6); printf("¢Ã      ¢Ã");
+    gotoxy(x, y);     printf("â–£      â–£");
+    gotoxy(x, y + 1); printf("â–£â–£    â–£");
+    gotoxy(x, y + 2); printf("â–£ â–£   â–£");
+    gotoxy(x, y + 3); printf("â–£  â–£  â–£");
+    gotoxy(x, y + 4); printf("â–£   â–£ â–£");
+    gotoxy(x, y + 5); printf("â–£    â–£â–£");
+    gotoxy(x, y + 6); printf("â–£      â–£");
 }
 
 void printG(int x, int y)
 {
-    gotoxy(x, y);     printf(" ¢Ã¢Ã¢Ã¢Ã  ");
-    gotoxy(x, y + 1); printf("¢Ã      ");
-    gotoxy(x, y + 2); printf("¢Ã      ");
-    gotoxy(x, y + 3); printf("¢Ã   ¢Ã¢Ã¢Ã");
-    gotoxy(x, y + 4); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 5); printf("¢Ã      ¢Ã");
-    gotoxy(x, y + 6); printf(" ¢Ã¢Ã¢Ã¢Ã");
+    gotoxy(x, y);     printf(" â–£â–£â–£â–£  ");
+    gotoxy(x, y + 1); printf("â–£      ");
+    gotoxy(x, y + 2); printf("â–£      ");
+    gotoxy(x, y + 3); printf("â–£   â–£â–£â–£");
+    gotoxy(x, y + 4); printf("â–£      â–£");
+    gotoxy(x, y + 5); printf("â–£      â–£");
+    gotoxy(x, y + 6); printf(" â–£â–£â–£â–£");
 }
 
 void printA(int x, int y)
 {
-    gotoxy(x, y);      printf("     ¢Ã    ");
-    gotoxy(x, y + 1); printf("   ¢Ã¢Ã¢Ã   ");
-    gotoxy(x, y + 2); printf("  ¢Ã    ¢Ã  ");
-    gotoxy(x, y + 3); printf(" ¢Ã¢Ã¢Ã¢Ã¢Ã ");
-    gotoxy(x, y + 4); printf(" ¢Ã      ¢Ã");
-    gotoxy(x, y + 5); printf(" ¢Ã      ¢Ã");
-    gotoxy(x, y + 6); printf(" ¢Ã      ¢Ã");
+    gotoxy(x, y);      printf("     â–£    ");
+    gotoxy(x, y + 1); printf("   â–£â–£â–£   ");
+    gotoxy(x, y + 2); printf("  â–£    â–£  ");
+    gotoxy(x, y + 3); printf(" â–£â–£â–£â–£â–£ ");
+    gotoxy(x, y + 4); printf(" â–£      â–£");
+    gotoxy(x, y + 5); printf(" â–£      â–£");
+    gotoxy(x, y + 6); printf(" â–£      â–£");
 }
 
 void printM(int x, int y)
 {
-    gotoxy(x, y);     printf("¢Ã         ¢Ã");
-    gotoxy(x, y + 1); printf("¢Ã¢Ã     ¢Ã¢Ã");
-    gotoxy(x, y + 2); printf("¢Ã ¢Ã   ¢Ã ¢Ã");
-    gotoxy(x, y + 3); printf("¢Ã  ¢Ã ¢Ã  ¢Ã");
-    gotoxy(x, y + 4); printf("¢Ã   ¢Ã    ¢Ã");
-    gotoxy(x, y + 5); printf("¢Ã         ¢Ã");
-    gotoxy(x, y + 6); printf("¢Ã         ¢Ã");
+    gotoxy(x, y);     printf("â–£         â–£");
+    gotoxy(x, y + 1); printf("â–£â–£     â–£â–£");
+    gotoxy(x, y + 2); printf("â–£ â–£   â–£ â–£");
+    gotoxy(x, y + 3); printf("â–£  â–£ â–£  â–£");
+    gotoxy(x, y + 4); printf("â–£   â–£    â–£");
+    gotoxy(x, y + 5); printf("â–£         â–£");
+    gotoxy(x, y + 6); printf("â–£         â–£");
 }
 
 void printE(int x, int y)
 {
-    gotoxy(x, y);     printf("¢Ã¢Ã¢Ã¢Ã¢Ã");
-    gotoxy(x, y + 1); printf("¢Ã       ");
-    gotoxy(x, y + 2); printf("¢Ã");
-    gotoxy(x, y + 3); printf("¢Ã¢Ã¢Ã¢Ã¢Ã");
-    gotoxy(x, y + 4); printf("¢Ã       ");
-    gotoxy(x, y + 5); printf("¢Ã       ");
-    gotoxy(x, y + 6); printf("¢Ã¢Ã¢Ã¢Ã¢Ã");
+    gotoxy(x, y);     printf("â–£â–£â–£â–£â–£");
+    gotoxy(x, y + 1); printf("â–£       ");
+    gotoxy(x, y + 2); printf("â–£");
+    gotoxy(x, y + 3); printf("â–£â–£â–£â–£â–£");
+    gotoxy(x, y + 4); printf("â–£       ");
+    gotoxy(x, y + 5); printf("â–£       ");
+    gotoxy(x, y + 6); printf("â–£â–£â–£â–£â–£");
 }
 
 
 void ShotingGame() {
     system("cls");
-    //»ç¿ëÀÚ Á¤º¸ ¹Ş±â
+    //ì‚¬ìš©ì ì •ë³´ ë°›ê¸°
     printf("ENTER YOUR NAME: ");
     scanf_s("%s", currentPlayer, sizeof(currentPlayer));
     //fgets(playerInfo->name, sizeof(playerInfo->name), stdin);
@@ -196,17 +196,18 @@ void ShotingGame() {
         strcpy_s(playerList[arrLength].name, 20, currentPlayer);
     }
 
-    //°ÔÀÓ½ÃÀÛ
+    //ê²Œì„ì‹œì‘
     while (1) {
         switch (currentRound) {
         case 1: RoundOne(); break;
         case 2: RoundTwo(); break;
         case 3: RoundThree(); break;
+        case 4: esc(); return 0;
         }
     }
 }
 
-// ¶ó¿îµå1
+///////////////////ë¼ìš´ë“œ1_ROUND1/////////////////////////
 void RoundOne() {
     system("cls");
     srand((unsigned)time(NULL));
@@ -231,7 +232,6 @@ void RoundOne() {
                 case RIGHT:
                     if (fx < 72)
                         fx++;
-                    //playerMove(ch);
                     break;
                 case SPACE:
                     defaultBall.x = fx + 2 ;
@@ -239,59 +239,184 @@ void RoundOne() {
                     defaultBall.exist = TRUE;
                     break;
                 case ESC:
-                    esc();
-                    break;
+                    currentRound = 4;
+                    return 0;
                 }
-            }
-            if (item.y == fy && abs(item.x - fx) <= 6) {
-                gotoxy(25, 30);
-                printf("¾ÆÀÌÅÛ È¹µæ!");
-                itemBall.exist = TRUE;
-                defaultBall.exist = FALSE;
             }
             if (!itemBall.isShooting) {
                 if (ch == SPACE && itemBall.exist) {
                     itemBall.isShooting = TRUE;
                     itemBall.x = fx+1;
-                    itemBall.y = 23-1;
+                    itemBall.y = fy-1;
+                    shootingCount--;
                 }
             }
         }
-        playerDraw(fx, fy, ch);
+        drawPlayer(fx, fy, ch);
         moveAndPrintAllies();
         showEnemy();
         moveEnemy();
-        //showEnemyBall(); 
+        showEnemyBall(); 
         showItem();
-        showItemBall();
-
         Sleep(40);
+        if (!shootingCount < 0) {
+            showItemBall();
+        }
 
-        if (currentRound == 0) {
-            esc();
-            break;
+        if (currentRound == 4) {
+            return 0;
         }
 
         if (Score >= roundScoreThreshold) {
             currentRound++;
-            roundScoreThreshold += 60;
-            enemySpeed++;
-            return 0;
+            roundScoreThreshold += 60; //ì¶”í›„ 60ìœ¼ë¡œ ìˆ˜ì •
+            enemySpeed+=0.01;
+            shootingCount = 5;
+            break;
         }
     }
 }
-///////////////////////±âº» ÃÑ¾Ë//////////////////////////////
-void moveAndPrintAllies()  //¾Æ±º ÃÑ¾Ë ÀÌµ¿°ú Ãâ·Â
-{
-    itemBall.exist = FALSE;
-    if (defaultBall.y <= 1) {
-        defaultBall.exist = FALSE;
-        eraseDefaultBall();
+///////////////////ë¼ìš´ë“œ2_ROUND2/////////////////////////
+void RoundTwo() {
+    system("cls");
+    srand((unsigned)time(NULL));
+    CursorView(0);
+
+    while (1) {
+        if (_kbhit() == 1) {
+            ch = _getch();
+            if (ch == 0xE0 || ch == 0X00)
+            {
+                _getch();
+            }
+            else
+            {
+                switch (ch)
+                {
+                case LEFT:
+                    if (fx > 6) {
+                        fx--;
+                    }
+                    break;
+                case RIGHT:
+                    if (fx < 72)
+                        fx++;
+                    break;
+                case SPACE:
+                    defaultBall.x = fx + 2;
+                    defaultBall.y = fy;
+                    defaultBall.exist = TRUE;
+                    break;
+                case ESC:
+                    currentRound = 4;
+                    return 0;
+                }
+            }
+            if (!itemBall.isShooting) {
+                if (ch == SPACE && itemBall.exist) {
+                    itemBall.isShooting = TRUE;
+                    itemBall.x = fx + 1;
+                    itemBall.y = 23 - 1;
+                }
+            }
+        }
+        drawPlayer(fx, fy, ch);
+        moveAndPrintAllies();
+        showEnemy();
+        moveEnemy();
+        showEnemyBall(); 
+        showItem();
+        Sleep(40);
+        if (!shootingCount < 0) {
+            showItemBall();
+        }
+        if (currentRound == 4) {
+            return 0;
+        }
+        if (Score >= roundScoreThreshold) {
+            currentRound++;
+            roundScoreThreshold += 60; //ì¶”í›„ 60ìœ¼ë¡œ ìˆ˜ì •
+            enemySpeed+=0.001;
+            shootingCount = 5;
+            break;
+        }
     }
-    if (defaultBall.exist && itemBall.exist == FALSE) {
+}
+///////////////////ë¼ìš´ë“œ3_ROUND3/////////////////////////
+void RoundThree() {
+    system("cls");
+    srand((unsigned)time(NULL));
+    CursorView(0);
+
+    while (1) {
+        if (_kbhit() == 1) {
+            ch = _getch();
+            if (ch == 0xE0 || ch == 0X00)
+            {
+                _getch();
+            }
+            else
+            {
+                switch (ch)
+                {
+                case LEFT:
+                    if (fx > 6) {
+                        fx--;
+                    }
+                    break;
+                case RIGHT:
+                    if (fx < 72)
+                        fx++;
+                    break;
+                case SPACE:
+                    defaultBall.x = fx + 2;
+                    defaultBall.y = fy;
+                    defaultBall.exist = TRUE;
+                    break;
+                case ESC:
+                    currentRound = 4;
+                    return 0;
+                }
+            }
+            if (!itemBall.isShooting) {
+                if (ch == SPACE && itemBall.exist) {
+                    itemBall.isShooting = TRUE;
+                    itemBall.x = fx;
+                    itemBall.y = fy;
+                }
+            }
+        }
+        drawPlayer(fx, fy, ch);
+        moveAndPrintAllies();
+        showEnemy();
+        moveEnemy();
+        showEnemyBall(); 
+        showItem();
+        Sleep(40);
+        if (!shootingCount < 0) {
+            showItemBall();
+        }
+        if (currentRound == 4) {
+            return 0;
+        }
+        if (Score >= roundScoreThreshold) {
+            currentRound++;
+            break;
+        }
+        
+    }
+}
+////////////////ê¸°ë³¸ ì´ì•Œ_DefaultBall//////////////////
+void moveAndPrintAllies()  //ì•„êµ° ì´ì•Œ ì´ë™ê³¼ ì¶œë ¥
+{
+    if (defaultBall.exist) {
         for (int i = 0; i < 18; i++) {}
         eraseDefaultBall();
         drawDefaultBall();
+    }
+    if (defaultBall.y <= 1) {
+        defaultBall.exist = FALSE;
+        eraseDefaultBall();
     }
 }
 void drawDefaultBall() {
@@ -303,9 +428,9 @@ void eraseDefaultBall() {
     gotoxy(defaultBall.x, defaultBall.y);
     printf(" ");
 }
-//////////////¾ÆÀÌÅÛ È¹µæ ÈÄ ¹Ù²ï ÃÑ¾Ë//////////////////////
+//////////////ì•„ì´í…œ íšë“ í›„ ë°”ë€ ì´ì•Œ_ItemBall//////////////////////
 void showItemBall() {
-    if (defaultBall.exist == FALSE && itemBall.isShooting == TRUE) {
+    if (itemBall.isShooting) {
         for (int i = 0; i < 21; i++) {}
         eraseItemBall();
         drawItemBall();
@@ -313,7 +438,7 @@ void showItemBall() {
             itemBall.isShooting = FALSE;
             eraseItemBall();
         }
-    }   
+    }
 }
 void drawItemBall() {
     itemBall.y--;
@@ -325,134 +450,27 @@ void eraseItemBall() {
     printf("    ");
 }
 
-///////////////////¶ó¿îµå2/////////////////////////
-void RoundTwo() {
-    srand((unsigned)time(NULL));
-    CursorView(0);
-
-    while (1) {
-        if (_kbhit() == 1) {
-            ch = _getch();
-            if (ch == 0xE0 || ch == 0X00)
-            {
-                _getch();
-            }
-            else
-            {
-                switch (ch)
-                {
-                case LEFT:
-                case RIGHT:
-                    //playerMove(ch);
-                    break;
-                case ESC:
-                    esc();
-                    break;
-                }
-            }
-        }
-        showEnemy();
-        moveEnemy();
-        showEnemyBall();
-        showItem();
-
-        Sleep(50);
-
-        if (currentRound == 0) {
-            esc();
-            break;
-        }
-        if (Score >= roundScoreThreshold) {
-            currentRound++;
-            roundScoreThreshold += 60;
-            enemySpeed++;
-        }
-    }
-}
-// ¶ó¿îµå3
-void RoundThree() {
-    system("cls");
-
-    srand((unsigned)time(NULL));
-    CursorView(0);
-
-    while (1) {
-        if (_kbhit() == 1) {
-            ch = _getch();
-            if (ch == 0xE0 || ch == 0X00)
-            {
-                _getch();
-            }
-            else
-            {
-                switch (ch)
-                {
-                case LEFT:
-                case RIGHT:
-                    //playerMove(ch);
-                    break;
-                case ESC:
-                    esc();
-                    break;
-                }
-            }
-        }
-        showEnemy();
-        moveEnemy();
-        showEnemyBall();
-        showItem();
-        //Sleep(3000);
-        
-        Sleep(50);
-        if (currentRound == 0) {
-            esc();
-            break;
-        }
-        if (Score >= roundScoreThreshold) {
-            currentRound++;
-        }
-    }
-}
-
-
-/*void playerMove() { //movePlayer¼öÁ¤
-    if (ch == LEFT) {
-        if (bx > 6) {
-            bx--;
-            playerDraw(bx, 23);
-            playerErase(bx + 5, 23);
-        }
-    }
-    if (ch == RIGHT) {
-        if (bx < 72) {
-            bx++;
-            playerDraw(bx, 23);
-            playerErase(bx - 2, 23);
-        }
-    }
-}*/
-
-void playerDraw(int x, int y, unsigned char ch) { //Drawplayer¼öÁ¤
+void drawPlayer(int x, int y, unsigned char ch) { 
     gotoxy(x, y);
     puts("<<A>>");
 
     if (ch == LEFT) {
-        playerErase(x + 5, 23);
+        erasePlayer(x + 5, 23);
     }
     if (ch == RIGHT) {
-        playerErase(x - 2, 23);
+        erasePlayer(x - 2, 23);
     }
     
     gotoxy(0, 34);
-    printf("Á¡¼ö = %d  \n¶ó¿îµå = %d", Score, currentRound);
+    printf("ì ìˆ˜ = %d  \në¼ìš´ë“œ = %d", Score, currentRound);
 }
 
-void playerErase(int x, int y) {
+void erasePlayer(int x, int y) {
     gotoxy(x, y);
     puts("  ");
 }
 
-//Enemy function
+///////////////////ì êµ°_Enemy////////////////////////
 void showEnemy() {
     int i, j, location, hieght;
     location = rand() % 2;
@@ -524,23 +542,26 @@ void moveEnemy() {
 
             }
         }
-        if (enemy[i].y == itemBall.y && abs(enemy[i].x - itemBall.x) <= 6) {
-            enemy[i].exist = FALSE;
+        if (defaultBall.exist && defaultBall.y == enemy[i].y && abs(defaultBall.x - enemy[i].x) <= 4.5) {
+            defaultBall.exist = FALSE;
+            eraseDefaultBall();
+            hitEnemy(i);
+        }
+        if (enemy[i].y == itemBall.y && abs(enemy[i].x - itemBall.x) <= 4.5) {
             itemBall.isShooting = FALSE;
             eraseItemBall();
             hitEnemy(i);
         }
     }
 }
-
 void eraseEnemy(int i) {
     if (enemy[i].move == 1) {
         gotoxy(enemy[i].x - enemySpeed, enemy[i].y);
-        puts("       ");
+        puts("         ");
     }
     else {
         gotoxy(enemy[i].x + enemySpeed, enemy[i].y);
-        puts("       ");
+        puts("         ");
     }
 }
 int getEnemyHealth(int i) {
@@ -556,18 +577,24 @@ int getEnemyHealth(int i) {
 }
 
 void hitEnemy(int i) {
-    gotoxy(bx, by);
-    printf("     ");
-    gotoxy(enemy[i].x, enemy[i].y);
-    puts("       ");
-    enemy[i].hit = TRUE;
-    if (enemy[i].hit == TRUE) {
+    switch (enemy[i].health) {
+    case 1:
+        enemy[i].exist = FALSE;
+        gotoxy(enemy[i].x, enemy[i].y);
+        printf("       ");
         Score += 7 - enemy[i].nFrame;
+        break;
+    case 2:
+    case 3: 
+        enemy[i].health--;
+        break;
+    case 4:
+    case 5:
+        enemy[i].health--;
+        break;
     }
 }
-
-
-//EnemyBall function
+///////////////////ì êµ° ì´ì•Œ_EnemyBall////////////////////////
 void showEnemyBall() {
     int i;
     int r = rand() % 100 + 1;
@@ -575,24 +602,25 @@ void showEnemyBall() {
     if (i != MAXENEMYBALL && enemy[r].exist == TRUE) {
         enemyBall[i].x = enemy[r].x;
         enemyBall[i].y = enemy[r].y;
+        enemyBall[i].nFrame = enemyBall[i].nStay = enemy[i].nFrame * 6;
         enemyBall[i].exist = TRUE;
     }
     moveEnemyBall();
 }
-
 void drawEnemyBall(int i) {
     gotoxy(enemyBall[i].x, enemyBall[i].y);
     printf("*");
 }
-
 void eraseEnemyBall(int i) {
     gotoxy(enemyBall[i].x, enemyBall[i].y);
     printf(" ");
 }
-void moveEnemyBall() { //ÃßÈÄ ÃÑ¾Ë ¼Óµµ¸¸ ´À¸®°Ô
+void moveEnemyBall() { //ì¶”í›„ ì´ì•Œ ì†ë„ë§Œ ëŠë¦¬ê²Œ
     int i;
     for (i = 0; i < MAXENEMYBALL; i++)
     {
+        enemyBall[i].nStay = enemyBall[i].nFrame;
+        gotoxy(enemyBall[i].x, enemyBall[i].y); printf(" ");
         if (enemyBall[i].exist == TRUE) {
             eraseEnemyBall(i);
             if (enemyBall[i].y >= 23) {
@@ -612,34 +640,46 @@ void moveEnemyBall() { //ÃßÈÄ ÃÑ¾Ë ¼Óµµ¸¸ ´À¸®°Ô
         return 0;
     }
 }
-
 void hitPlayer(int i) {
     enemyBall[i].exist = FALSE;
     gotoxy(fx - 2, 21); puts("   .   ");
     gotoxy(fx - 2, 22); puts(" .  . .");
     gotoxy(fx - 2, 23); puts("..:V:..");
-    currentRound = 0;
+    currentRound = 4;
 }
-//////////////////////¾ÆÀÌÅÛ//////////////////////////
+//////////////////////ì•„ì´í…œ_Item//////////////////////////
 void showItem() {
-    if (rand() % 200 == 0) { // ¾ÆÀÌÅÛ ³ª¿Ã È®·ü
-        item.x = 30; //rand() % 40 + 5;
+    if (rand() % 200 == 0) { // ì•„ì´í…œ ë‚˜ì˜¬ í™•ë¥ 
+        item.x = rand() % 40 + 5;
         item.y = 2;
         item.exist = TRUE;
     }
     if (item.exist == TRUE) {
-        eraseItem();
-        moveItem();
+        static clock_t lastDropTime = 0;
+        clock_t currentTime = clock();
+
+        if (currentTime - lastDropTime >= CLOCKS_PER_SEC / ITEM_DROP_SPEED) {
+            lastDropTime = currentTime;
+            eraseItem();
+            moveItem();
+        }
     }
 }
-
 void moveItem() {
-    if (item.y >= 23) {
-        item.exist = FALSE;
-        eraseItem();
-    }else {
+    if (item.y < 24) {
         eraseItem();
         drawItem();
+        if (item.y == fy && abs(item.x - fx) <= 3) {
+        gotoxy(25, 30);
+        printf("ì•„ì´í…œ íšë“!");
+        shootingCount = 5;
+        itemBall.exist = TRUE;
+        defaultBall.exist = FALSE;
+        itemBall.isShooting = FALSE;
+        }
+    }else {
+        item.exist = FALSE;
+        eraseItem();
     }
 }
 void drawItem() {
@@ -647,23 +687,20 @@ void drawItem() {
     gotoxy(item.x, item.y);
     printf("&");
 }
-
 void eraseItem() {
     gotoxy(item.x, item.y);
     printf(" ");
 }
-
+///////////////////ì ìˆ˜_Score//////////////////////////////
 int compare(const void* a, const void* b)
 {
     return ((PlayerInfo*)b)->score - ((PlayerInfo*)a)->score;
 }
-
 void esc() {
     system("cls");
-    //gotoxy(30, 10);
-    //printf("==========================GAMEOVER==========================\n\n");
-    DisplayHighScores();  // ROUND / RANK / ÀÌ¸§ - Á¡¼ö
+    DisplayHighScores();  // ROUND / RANK / ì´ë¦„ - ì ìˆ˜
     CursorView(0);
+    return 0;
 }
 
 void UpdateHighScores(int newScore, PlayerInfo* player)
@@ -675,7 +712,7 @@ void UpdateHighScores(int newScore, PlayerInfo* player)
     }
     qsort(player, arrLength + 1, sizeof(player[0]), compare);
 
-}//ÇöÀç ÇÃ·¹ÀÌ¾îÀÇ ¼øÀ§ °áÁ¤ ÇÔ¼ö
+}//í˜„ì¬ í”Œë ˆì´ì–´ì˜ ìˆœìœ„ ê²°ì • í•¨ìˆ˜
 
 void DisplayHighScores()
 {
@@ -684,6 +721,6 @@ void DisplayHighScores()
     printf("===== HIGH SCORES =====\n\n");
     for (int i = 0; i < 5; i++)
     {
-        printf("<<Rank %d>>\n ROUND %d :: %s :: %d\n\n", 1 + i, currentRound, playerList[i].name, playerList[i].score);
+        printf("<<Rank %d>>\n %s :: %d\n\n", 1 + i, playerList[i].name, playerList[i].score);
     }
-}//³¡³¯ ¶§ ROUND / RANK / ÀÌ¸§ - Á¡¼ö
+}//ëë‚  ë•Œ RANK / ì´ë¦„ - ì ìˆ˜
