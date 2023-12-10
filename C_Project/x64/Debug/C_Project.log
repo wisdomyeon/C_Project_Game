@@ -6,16 +6,16 @@ C:\Users\user\source\repos\C_Project\C_Project\game.c(65,5): warning C4013: 'got
 C:\Users\user\source\repos\C_Project\C_Project\game.c(30,7): warning C4101: 'COLOR' :참조되지 않은 지역 변수입니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(188,13): warning C4477: 'scanf_s' : 서식 문자열 '%s'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'size_t'입니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(188,13): message : 이 인수는 버퍼 크기로 사용됩니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(205,32): warning C4098: 'ShotingGame': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(243,29): warning C4098: 'RoundOne': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(267,21): warning C4098: 'RoundOne': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(273,25): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(312,29): warning C4098: 'RoundTwo': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(203,32): warning C4098: 'ShotingGame': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(241,29): warning C4098: 'RoundOne': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(266,21): warning C4098: 'RoundOne': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(272,25): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(311,29): warning C4098: 'RoundTwo': 'void' 함수에서 값을 반환하고 있습니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(334,21): warning C4098: 'RoundTwo': 'void' 함수에서 값을 반환하고 있습니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(339,25): warning C4244: '+=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\user\source\repos\C_Project\C_Project\game.c(378,29): warning C4098: 'RoundThree': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(400,21): warning C4098: 'RoundThree': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(640,17): warning C4098: 'moveEnemyBall': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(703,13): warning C4098: 'esc': 'void' 함수에서 값을 반환하고 있습니다.
-C:\Users\user\source\repos\C_Project\C_Project\game.c(577): warning C4716: 'getEnemyHealth': 값을 반환해야 합니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(402,21): warning C4098: 'RoundThree': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(642,17): warning C4098: 'moveEnemyBall': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(705,13): warning C4098: 'esc': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\user\source\repos\C_Project\C_Project\game.c(579): warning C4716: 'getEnemyHealth': 값을 반환해야 합니다.
   C_Project.vcxproj -> C:\Users\user\source\repos\C_Project\x64\Debug\C_Project.exe

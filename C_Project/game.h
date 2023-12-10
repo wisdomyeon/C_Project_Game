@@ -10,7 +10,7 @@
 //#define WHITE SetConsoleTextAttribute(COLOR, 0x0007);
 
 #define MAXPLAYER 10
-#define MAXENEMY 10
+#define MAXENEMY 5
 #define MAXBALL 15 
 #define MAXSCORES 5
 #define MAXENEMYBALL 15
@@ -31,9 +31,6 @@ char currentPlayer[20];
 int isShooting = 0; // 총 쐈다는 변수
 int enemySpeed = 1; // 초기 이동 속도
 int shootingCount;
-//int ballCount = 0;
-//int ballIndex = 0;
-//int ItemSpeed = 0;
 
 void start();
 void printS(int x, int y);

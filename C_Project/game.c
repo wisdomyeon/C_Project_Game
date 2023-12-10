@@ -186,13 +186,11 @@ void ShotingGame() {
     //사용자 정보 받기
     printf("ENTER YOUR NAME: ");
     scanf_s("%s", currentPlayer, sizeof(currentPlayer));
-    //fgets(playerInfo->name, sizeof(playerInfo->name), stdin);
 
     for (int i = 0; i < arrLength; i++) {
         res = strcmp(currentPlayer, playerList[i].name) == 0 ? 1 : 0;
     }
     if (res == 0) {
-        //player[arrLength + 1].name[strcspn(player[arrLength+1].name, "\n")] = '\0';
         strcpy_s(playerList[arrLength].name, 20, currentPlayer);
     }
 
@@ -259,7 +257,8 @@ void RoundOne() {
         showEnemyBall(); 
         showItem();
         Sleep(40);
-        if (!shootingCount < 0) {
+        Score = 60;
+        if (!shootingCount <= 0) {
             showItemBall();
         }
 
@@ -269,9 +268,9 @@ void RoundOne() {
 
         if (Score >= roundScoreThreshold) {
             currentRound++;
-            roundScoreThreshold += 60; //추후 60으로 수정
+            roundScoreThreshold += 60;
             enemySpeed+=0.01;
-            shootingCount = 5;
+            shootingCount = 6;
             break;
         }
     }
@@ -316,7 +315,8 @@ void RoundTwo() {
                 if (ch == SPACE && itemBall.exist) {
                     itemBall.isShooting = TRUE;
                     itemBall.x = fx + 1;
-                    itemBall.y = 23 - 1;
+                    itemBall.y = fy - 1;
+                    shootingCount--;
                 }
             }
         }
@@ -327,7 +327,7 @@ void RoundTwo() {
         showEnemyBall(); 
         showItem();
         Sleep(40);
-        if (!shootingCount < 0) {
+        if (!shootingCount <= 0) {
             showItemBall();
         }
         if (currentRound == 4) {
@@ -335,9 +335,9 @@ void RoundTwo() {
         }
         if (Score >= roundScoreThreshold) {
             currentRound++;
-            roundScoreThreshold += 60; //추후 60으로 수정
-            enemySpeed+=0.001;
-            shootingCount = 5;
+            roundScoreThreshold += 60;
+            enemySpeed+=0.01;
+            shootingCount = 6;
             break;
         }
     }
@@ -381,8 +381,9 @@ void RoundThree() {
             if (!itemBall.isShooting) {
                 if (ch == SPACE && itemBall.exist) {
                     itemBall.isShooting = TRUE;
-                    itemBall.x = fx;
-                    itemBall.y = fy;
+                    itemBall.x = fx + 1;
+                    itemBall.y = fy - 1;
+                    shootingCount--;
                 }
             }
         }
@@ -393,7 +394,8 @@ void RoundThree() {
         showEnemyBall(); 
         showItem();
         Sleep(40);
-        if (!shootingCount < 0) {
+        
+        if (!shootingCount <= 0) {
             showItemBall();
         }
         if (currentRound == 4) {
@@ -615,7 +617,7 @@ void eraseEnemyBall(int i) {
     gotoxy(enemyBall[i].x, enemyBall[i].y);
     printf(" ");
 }
-void moveEnemyBall() { //추후 총알 속도만 느리게
+void moveEnemyBall() { 
     int i;
     for (i = 0; i < MAXENEMYBALL; i++)
     {
@@ -670,12 +672,12 @@ void moveItem() {
         eraseItem();
         drawItem();
         if (item.y == fy && abs(item.x - fx) <= 3) {
-        gotoxy(25, 30);
-        printf("아이템 획득!");
-        shootingCount = 5;
-        itemBall.exist = TRUE;
-        defaultBall.exist = FALSE;
-        itemBall.isShooting = FALSE;
+            shootingCount = 6;
+            gotoxy(25, 30);
+            printf("아이템 획득!");
+            itemBall.exist = TRUE;
+            defaultBall.exist = FALSE;
+            itemBall.isShooting = FALSE;
         }
     }else {
         item.exist = FALSE;
@@ -721,6 +723,6 @@ void DisplayHighScores()
     printf("===== HIGH SCORES =====\n\n");
     for (int i = 0; i < 5; i++)
     {
-        printf("<<Rank %d>>\n %s :: %d\n\n", 1 + i, playerList[i].name, playerList[i].score);
+        printf("<<Rank %d>>\n %s :: %d점\n\n", 1 + i, playerList[i].name, playerList[i].score);
     }
 }//끝날 때 RANK / 이름 - 점수
